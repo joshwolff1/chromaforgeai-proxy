@@ -1,7 +1,7 @@
 FROM openresty/openresty:alpine
 
-# Install lua-resty-http with proper paths
-RUN apk add --no-cache git make \
+# Install lua-resty-http and CA certificates
+RUN apk add --no-cache git make ca-certificates \
     && cd /tmp \
     && git clone https://github.com/ledgetech/lua-resty-http \
     && cd lua-resty-http \
