@@ -8,6 +8,9 @@ RUN apk add --no-cache git make \
     && make install \
     && rm -rf /tmp/lua-resty-http
 
+# Create necessary directories
+RUN mkdir -p /var/log/nginx
+
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 
