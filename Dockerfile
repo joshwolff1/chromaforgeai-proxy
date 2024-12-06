@@ -1,7 +1,14 @@
-# Dockerfile
-FROM nginx:alpine
+FROM openresty/openresty:alpine
 
-COPY nginx.conf /etc/nginx/nginx.conf
+# Install lua-resty-http
+RUN apk add --no-cache git \
+    && cd /tmp \
+    && git clone https://github.com/ledgetech/lua-resty-http \
+    && cd lua-resty-http \
+    && make install \
+    && rm -rf /tmp/lua-resty-http
+
+COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
