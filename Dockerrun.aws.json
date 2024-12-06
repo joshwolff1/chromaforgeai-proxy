@@ -1,0 +1,19 @@
+{
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+      "Name": "nginx:alpine",
+      "Update": "true"
+    },
+    "Ports": [
+      {
+        "ContainerPort": "80",
+        "HostPort": "80"
+      }
+    ],
+    "Volumes": [
+      {
+        "HostDirectory": "/var/app/nginx/conf.d",
+        "ContainerDirectory": "/etc/nginx/conf.d"
+      }
+    ]
+  }
